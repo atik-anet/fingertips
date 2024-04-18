@@ -16,8 +16,31 @@
       {
         "command": "fingertips.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "fingertips.showMaintainers",
+        "title": "Show Maintainers"
       }
-    ]
+    ],
+    "views": {
+      "nodeDependencies": [
+        {
+          "id": "nodeDependencies",
+          "name": "Finger Tips",
+          "icon": "media/activity-bar-icon.svg",
+          "contextualTitle": "Finger Tips"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "nodeDependencies",
+          "title": "Finger Tips",
+          "icon": "./media/activity-bar-icon.svg"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
