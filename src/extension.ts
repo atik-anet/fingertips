@@ -111,6 +111,88 @@ vscode.window.createTreeView('nodeDependencies', {
 	treeDataProvider: new NodeDependenciesProvider(rootPath)
 });
 
+export class MaintainerProvider implements vscode.TreeDataProvider<Maintainer> {
+	constructor(private workspaceRoot: string) {}
+
+	getTreeItem(element: Maintainer): vscode.TreeItem {
+		return element;
+	}
+
+	getChildren(element?: Maintainer): Thenable<Maintainer[]> {
+		if (!this.workspaceRoot) {
+		vscode.window.showInformationMessage('No dependency in empty workspace');
+		return Promise.resolve([]);
+		}
+
+		if (element) {
+		return Promise.resolve(
+			this.getMaintainers(
+			path.join(this.workspaceRoot, 'maintainers.json')
+			)
+		);
+		} else {
+		const maintainersFilePath = path.join(this.workspaceRoot, 'maintainers.json');
+		if (this.pathExists(maintainersFilePath)) {
+			return Promise.resolve(this.getMaintainers(maintainersFilePath));
+		} else {
+			vscode.window.showInformationMessage('Workspace has no maintainers.json');
+			return Promise.resolve([]);
+		}
+		}
+	}
+
+	/**
+	 * Given the path to package.json, read all its dependencies and devDependencies.
+	 */
+	private getMaintainers(maintainersFilePath: string): Maintainer[] {
+		if (this.pathExists(maintainersFilePath)) {
+			const toAlias = (alias: string): Maintainer => {
+				if (this.pathExists(path.join(this.workspaceRoot, 'node_modules', alias))) {
+				return new Maintainer(
+					alias,
+					vscode.TreeItemCollapsibleState.Collapsed
+				);
+				} else {
+				return new Maintainer(alias, vscode.TreeItemCollapsibleState.None);
+				}
+			};
+
+			const filePath = JSON.parse(fs.readFileSync(maintainersFilePath, 'utf-8'));
+
+			const maintainers = filePath.maintainers;
+			maintainers.concat(filePath.leadMaintainer);
+			maintainers.concat(filePath.watchers);
+			return maintainers;
+		} else {
+			return [];
+		}
+	}
+
+	private pathExists(p: string): boolean {
+		try {
+		fs.accessSync(p);
+		} catch (err) {
+		return false;
+		}
+		return true;
+	}
+}	
+
+class Maintainer extends vscode.TreeItem {
+	constructor(
+		public readonly alias: string,
+		public readonly collapsibleState: vscode.TreeItemCollapsibleState
+	  ) {
+		super(alias, collapsibleState);
+		this.tooltip = `${this.alias}`;
+	  }
+	
+	  iconPath = {
+		light: path.join(__filename, '..', '..', 'resources', 'light', 'media/user.svg'),
+		dark: path.join(__filename, '..', '..', 'resources', 'dark', 'media/user.svg')
+	  };
+}
+
 
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
