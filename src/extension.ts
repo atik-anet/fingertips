@@ -3,6 +3,7 @@
 import * as vscode from 'vscode';
 import { MaintainerProvider } from './maintainer';
 import { AidProvider } from './aid';
+import { PackageProvider } from './packages';
 
 const workspaceRootPath =
   vscode.workspace.workspaceFolders && vscode.workspace.workspaceFolders.length > 0
@@ -18,13 +19,22 @@ const workspaceRootPath =
 // 	treeDataProvider: new MaintainerProvider(workspaceRootPath)
 // });
 
+// vscode.window.registerTreeDataProvider(
+// 	'fingertips',
+// 	new AidProvider(workspaceRootPath)
+// );
+
+// vscode.window.createTreeView('fingertips', {
+// 	treeDataProvider: new AidProvider(workspaceRootPath)
+// });
+
 vscode.window.registerTreeDataProvider(
 	'fingertips',
-	new AidProvider(workspaceRootPath)
+	new PackageProvider(workspaceRootPath)
 );
 
 vscode.window.createTreeView('fingertips', {
-	treeDataProvider: new AidProvider(workspaceRootPath)
+	treeDataProvider: new PackageProvider(workspaceRootPath)
 });
 
 // This method is called when your extension is activated

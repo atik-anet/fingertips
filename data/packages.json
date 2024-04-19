@@ -1,0 +1,18 @@
+{
+    "DfwTest": {
+        "name": "DfwTest",
+        "url": "https://opengrok.infra.corp.arista.io/source/xref/eos-trunk/src/DfwTest/"
+    },
+    "SfeFlowTracker": {
+        "name": "SfeFlowTracker",
+        "url": "https://opengrok.infra.corp.arista.io/source/xref/eos-trunk/src/SfeFlowTracker/"
+    },
+    "DfwService": {
+        "name": "DfwService",
+        "url": "https://opengrok.infra.corp.arista.io/source/xref/eos-trunk/src/DfwService/"
+    },
+    "DfwOffloadClient": {
+        "name": "DfwOffloadClient",
+        "url": "https://opengrok.infra.corp.arista.io/source/xref/eos-trunk/src/DfwOffloadClient/"
+    }
+}
