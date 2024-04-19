@@ -1,5 +1,7 @@
 {
-    "leadMaintainer": ["marc"],
+    "leadMaintainer": [
+        "marc"
+    ],
     "maintainers": [
         "michael.speer",
         "sanjeevi",

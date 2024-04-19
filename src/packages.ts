@@ -3,13 +3,13 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 export class PackageProvider implements vscode.TreeDataProvider<Package> {
-	constructor(private workspaceRoot: string) {}
+	constructor(private workspaceRoot: string) { }
 
 	getTreeItem(element: Package): vscode.TreeItem {
-        element.command = {
-            command: 'vscode.open',
-            arguments: [vscode.Uri.parse(element.url)]
-        } as vscode.Command;
+		element.command = {
+			command: 'vscode.open',
+			arguments: [vscode.Uri.parse(element.url)]
+		} as vscode.Command;
 		return element;
 	}
 
@@ -40,11 +40,11 @@ export class PackageProvider implements vscode.TreeDataProvider<Package> {
 		if (this.pathExists(packagesFilePath)) {
 			const packagesJSONObject = JSON.parse(fs.readFileSync(packagesFilePath, 'utf-8'));
 
-			const relatedPackages = packagesJSONObject ? 
-							Object.keys(packagesJSONObject).map(key => {
-                                const pkg = packagesJSONObject[key];
-                                return new Package(pkg.name, pkg.url);
-                            }): [] ;
+			const relatedPackages = packagesJSONObject ?
+				Object.keys(packagesJSONObject).map(key => {
+					const pkg = packagesJSONObject[key];
+					return new Package(pkg.name, pkg.url);
+				}) : [];
 			return relatedPackages;
 		} else {
 			return [];
@@ -59,18 +59,18 @@ export class PackageProvider implements vscode.TreeDataProvider<Package> {
 		}
 		return true;
 	}
-}	
+}
 
 class Package extends vscode.TreeItem {
 	constructor(
 		public readonly name: string,
-        public readonly url: string,
+		public readonly url: string,
 	) {
-		super(name,vscode.TreeItemCollapsibleState.None);
+		super(name, vscode.TreeItemCollapsibleState.None);
 		this.tooltip = this.url;
 	}
 
-    iconPath = {
+	iconPath = {
 		light: path.join(__filename, '..', '..', 'resources', 'light', 'package.svg'),
 		dark: path.join(__filename, '..', '..', 'resources', 'dark', 'package-dark.svg')
 	};
