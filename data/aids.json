@@ -1,0 +1,17 @@
+{
+    "AID2": {
+        "index":"2",
+        "title":"Arista Internal Documentation Standard",
+        "url":"https://docs.google.com/document/d/1QvBYM9ND3T5v7f8shGLdaFvgxXsuitpW3iRej6Kojdg/preview#heading=h.fc6zakhkky8q"
+    },
+    "AID5": {
+        "index": "5",
+        "title": "Efficient Engineering",
+        "url": "https://docs.google.com/document/d/1KScilAWN7BqrkZ1_qDU_JgljQkIt85tfzdqIOn_-6AI/preview#heading=h.6zkf4cai06xz"
+    },
+    "AID7": {
+        "index":"7",
+        "title":"Logging",
+        "url":"https://aid.infra.corp.arista.io/7/"
+    }
+}
