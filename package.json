@@ -25,10 +25,22 @@
     "views": {
       "fingertips": [
         {
-          "id": "fingertips",
-          "name": "Finger Tips",
+          "id": "aids",
+          "name": "Relevant AIDs",
           "icon": "media/activity-bar-icon.svg",
-          "contextualTitle": "Finger Tips"
+          "contextualTitle": "Relevant AIDs"
+        },
+        {
+          "id": "packages",
+          "name": "Related Packages",
+          "icon": "media/activity-bar-icon.svg",
+          "contextualTitle": "Related Packages"
+        },
+        {
+          "id": "maintainers",
+          "name": "Maintainers",
+          "icon": "media/activity-bar-icon.svg",
+          "contextualTitle": "Maintainers"
         }
       ]
     },

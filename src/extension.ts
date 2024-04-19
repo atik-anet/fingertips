@@ -10,30 +10,30 @@ const workspaceRootPath =
     ? vscode.workspace.workspaceFolders[0].uri.fsPath
     : '/Users/atik.kn/src/fingerTips/fingertips/';
 
-// vscode.window.registerTreeDataProvider(
-//   'fingertips',
-//   new MaintainerProvider(workspaceRootPath)
-// );
+vscode.window.registerTreeDataProvider(
+  'maintainers',
+  new MaintainerProvider(workspaceRootPath)
+);
 
-// vscode.window.createTreeView('fingertips', {
-// 	treeDataProvider: new MaintainerProvider(workspaceRootPath)
-// });
-
-// vscode.window.registerTreeDataProvider(
-// 	'fingertips',
-// 	new AidProvider(workspaceRootPath)
-// );
-
-// vscode.window.createTreeView('fingertips', {
-// 	treeDataProvider: new AidProvider(workspaceRootPath)
-// });
+vscode.window.createTreeView('maintainers', {
+	treeDataProvider: new MaintainerProvider(workspaceRootPath)
+});
 
 vscode.window.registerTreeDataProvider(
-	'fingertips',
+	'aids',
+	new AidProvider(workspaceRootPath)
+);
+
+vscode.window.createTreeView('aids', {
+	treeDataProvider: new AidProvider(workspaceRootPath)
+});
+
+vscode.window.registerTreeDataProvider(
+	'packages',
 	new PackageProvider(workspaceRootPath)
 );
 
-vscode.window.createTreeView('fingertips', {
+vscode.window.createTreeView('packages', {
 	treeDataProvider: new PackageProvider(workspaceRootPath)
 });
 
