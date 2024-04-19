@@ -1,7 +1,7 @@
 {
   "name": "fingertips",
   "displayName": "fingertips",
-  "description": "essential information about a package at fingertips",
+  "description": "essential information about a package at your fingertips",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.88.0"
@@ -52,7 +52,13 @@
           "icon": "./media/activity-bar-icon.svg"
         }
       ]
-    }
+    },
+    "viewsWelcome": [
+      {
+        "view": "fingertips",
+        "contents": "Info about package at your fingertips.\n \"Lightning McQueen\"ifies your development."
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

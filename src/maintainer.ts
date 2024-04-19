@@ -181,7 +181,7 @@ class Maintainer extends vscode.TreeItem {
 	}
 
 	iconPath = {
-		light: path.join(__filename, '..', '..', 'resources', 'light', 'media/user.svg'),
-		dark: path.join(__filename, '..', '..', 'resources', 'dark', 'media/user.svg')
+		light: path.join(__filename, '..', '..', 'resources', 'light', 'user.svg'),
+		dark: path.join(__filename, '..', '..', 'resources', 'dark', 'user-dark.svg')
 	};
 }

@@ -6,6 +6,10 @@ export class PackageProvider implements vscode.TreeDataProvider<Package> {
 	constructor(private workspaceRoot: string) {}
 
 	getTreeItem(element: Package): vscode.TreeItem {
+        element.command = {
+            command: 'vscode.open',
+            arguments: [vscode.Uri.parse(element.url)]
+        } as vscode.Command;
 		return element;
 	}
 
@@ -65,4 +69,9 @@ class Package extends vscode.TreeItem {
 		super(name,vscode.TreeItemCollapsibleState.None);
 		this.tooltip = this.url;
 	}
+
+    iconPath = {
+		light: path.join(__filename, '..', '..', 'resources', 'light', 'package.svg'),
+		dark: path.join(__filename, '..', '..', 'resources', 'dark', 'package-dark.svg')
+	};
 }

@@ -7,6 +7,10 @@ export class AidProvider implements vscode.TreeDataProvider<Aid> {
 	constructor(private workspaceRoot: string) {}
 
 	getTreeItem(element: Aid): vscode.TreeItem {
+        element.command = {
+            command: 'vscode.open',
+            arguments: [vscode.Uri.parse(element.url)]
+        } as vscode.Command;
 		return element;
 	}
 
@@ -65,6 +69,10 @@ class Aid extends vscode.TreeItem {
         public readonly url: string,
 	) {
 		super(`AID${index} : ${title}`,vscode.TreeItemCollapsibleState.None);
-		this.tooltip = `AID${this.index} : ${this.title}`;
+		this.tooltip = this.url;
 	}
+    iconPath = {
+		light: path.join(__filename, '..', '..', 'resources', 'light', 'document.svg'),
+		dark: path.join(__filename, '..', '..', 'resources', 'dark', 'document-dark.svg')
+	};
 }
