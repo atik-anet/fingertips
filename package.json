@@ -23,9 +23,9 @@
       }
     ],
     "views": {
-      "nodeDependencies": [
+      "fingertips": [
         {
-          "id": "nodeDependencies",
+          "id": "fingertips",
           "name": "Finger Tips",
           "icon": "media/activity-bar-icon.svg",
           "contextualTitle": "Finger Tips"
@@ -35,7 +35,7 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "nodeDependencies",
+          "id": "fingertips",
           "title": "Finger Tips",
           "icon": "./media/activity-bar-icon.svg"
         }
